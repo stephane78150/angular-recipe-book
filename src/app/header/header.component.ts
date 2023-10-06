@@ -5,5 +5,9 @@ import { Component } from "@angular/core";
     selector: 'app-header',
 })
 export class HeaderComponent {
+    public isBurgerMenuExpanded: boolean = false;
 
+    public onToggleBurgerMenu() {
+        this.isBurgerMenuExpanded = !this.isBurgerMenuExpanded;
+    }
 }
