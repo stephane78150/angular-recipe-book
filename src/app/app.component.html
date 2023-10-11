@@ -1,15 +1,15 @@
-<app-header></app-header>
+<app-header (menuSelected)="SelectMenu($event.menu)"></app-header>
 
 <div class="container-fluid">
   <div class="row">
       <div class="col-12">
-        <app-shopping></app-shopping>
+        <app-shopping *ngIf="selectedMenu === 'shoppingList'"></app-shopping>
       </div>
   </div>
   <hr >
   <div class="row">
     <div class="col-12">
-      <app-recipes></app-recipes>
+      <app-recipes *ngIf="selectedMenu === 'recipes'"></app-recipes>
     </div>
   </div>
 </div>

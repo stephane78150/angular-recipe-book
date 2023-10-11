@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Ingredient } from '../shared/shopping.model';
+import { ShoppingListService } from './shopping-list-service';
 
 @Component({
   selector: 'app-shopping',
@@ -6,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent {
-
 }

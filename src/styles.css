@@ -2,3 +2,6 @@
 .recipe-image {    
     max-width: 100px;
 }
+.recipe-details-image {    
+    max-height: 500px;
+}

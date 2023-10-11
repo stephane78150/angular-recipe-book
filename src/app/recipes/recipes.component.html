@@ -2,8 +2,13 @@
     <div class="col-md-5">
         <app-recipe-list></app-recipe-list>
     </div>
-    <div class="col-md-7">
-        <app-recipe-details></app-recipe-details>        
+    <div class="col-md-7" >
+        <app-recipe-details [data]="selectedRecipe" *ngIf="selectedRecipe != null; else noSelection"></app-recipe-details>        
+        <ng-template #noSelection>
+            <div class="alert alert-warning">
+                Please select a recipe on the left.
+            </div>
+        </ng-template>    
     </div>
 </div>
 

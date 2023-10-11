@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { Recipe } from '../recipe.model';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Recipe } from '../../shared/recipe.model';
+import { RecipeService } from '../recipe.service';
+
+interface RecipeSelectedEvent {
+  selected: Recipe;
+}
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,9 +12,16 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
-    public recipes: Recipe[] = [{
-      name: "Apple Pie", 
-      description: "Nothing is more american than an apple pie, lorem ipsum dolore sit lorem ipsum dolore sit lorem ipsum dolore sit", 
-      imagePath: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Tarte_aux_pommes_002.JPG"
-    }];
+  constructor(private recipeService: RecipeService) {
+
+  }
+ 
+  public SelectRecipe(selected: Recipe) {
+    this.recipeService.SelectRecipe(selected);
+  }
+
+  public get recipes() { 
+    return this.recipeService.Recipes;
+  }
+  
 }
