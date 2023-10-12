@@ -51,4 +51,11 @@ export class RecipeService {
     console.log("Add to shopping list", selected.ingredients);
     this.shoppingListService.AddItems(selected.ingredients);
   }
+
+  public GetByName(name: string | null): Recipe | null {
+    if (name === null) {
+      return null;
+    }
+    return this.list.find(x => x.name === name) ?? null;
+  }
 }

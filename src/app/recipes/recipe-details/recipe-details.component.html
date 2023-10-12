@@ -1,32 +1,32 @@
 <div class="row">
     <div class="col-12">
-        <img [src]="data.imagePath" alt="todo" class="recipe-details-image">
+        <img [src]="data?.imagePath" alt="todo" class="recipe-details-image">
     </div>
 </div>
 <div class="row mt-2 p-2">
     <div class="col-8">
-        <h1>{{data.name}}</h1>
+        <h1>{{data?.name}}</h1>
     </div>
     <div class="col-4">
         <div class="btn-group" role="group">
             <button class="btn btn-primary dropdown-toggle" type="button" [ngClass]="{show: isDropdownMenuExpanded}" (click)="onToggleDropdownMenu()"><span class="pe-2">Manage Recipe</span></button>
             <ul class="dropdown-menu" [ngClass]="{show: isDropdownMenuExpanded}" style="top: 30px">
-                <li><a class="dropdown-item" href="#" (click)="ShopIngredients()">Shop ingredient</a></li>
-                <li><a class="dropdown-item" href="#">Edit recipe</a></li>
-                <li><a class="dropdown-item" href="#">Delete recipe</a></li>
+                <li><a class="dropdown-item" routerLink="/shopping-list" (click)="ShopIngredients()">Shop ingredient</a></li>
+                <li><a class="dropdown-item">Edit recipe</a></li>
+                <li><a class="dropdown-item">Delete recipe</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        {{data.description}}
+        {{data?.description}}
     </div>
 </div>
 <div class="row">
     <div class="col-12">
         <ul>
-            <li *ngFor="let ing of data.ingredients">{{ing.name}} x {{ing.amount}}</li>
+            <li *ngFor="let ing of data?.ingredients ?? []">{{ing.name}} x {{ing.amount}}</li>
         </ul>
     </div>
 </div>

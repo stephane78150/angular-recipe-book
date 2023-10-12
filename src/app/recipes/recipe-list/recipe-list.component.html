@@ -4,6 +4,6 @@
     </div>
 </div>
 <div class="d-flex flex-column mt-3">
-    <app-recipe-item  *ngFor="let r of recipes" [recipeItem]="r" (recipeSelected)="SelectRecipe($event.selected)">
+    <app-recipe-item  *ngFor="let r of recipes" [recipeItem]="r">
     </app-recipe-item>
 </div>

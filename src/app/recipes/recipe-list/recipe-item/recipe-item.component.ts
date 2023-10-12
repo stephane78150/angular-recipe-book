@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Recipe } from '../../../shared/recipe.model';
-import { RecipeService } from '../../recipe.service';
+import { RecipeService } from '../../recipes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface ItemSelectedEvent {
   selected: Recipe;
@@ -15,13 +16,14 @@ export class RecipeItemComponent {
   @Input("recipeItem")
   public item: Recipe = null!;  
 
-  @Output("recipeSelected")
-  public onItemSelected = new EventEmitter<ItemSelectedEvent>();  
-
-  public constructor(private recipeService: RecipeService) {    
+  public constructor(
+    private recipeService: RecipeService, 
+    private router: Router) {    
   }
 
   public SelectItem() {
-    this.recipeService.SelectRecipe(this.item);    
+    console.log("selecting", this.item.name);
+    this.recipeService.SelectRecipe(this.item);
+    this.router.navigate(['recipes', this.item.name], {fragment: 'details'});
   }
 }
