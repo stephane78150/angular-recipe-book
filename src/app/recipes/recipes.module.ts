@@ -4,7 +4,13 @@ import { RecipesComponent } from './recipes.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
+
+const routes: Route[] = [
+  {path: '', component: RecipesComponent, children: [
+    {path: ':name', component: RecipeDetailsComponent},
+  ], title: "Recipe book - Recipe"},
+];
 
 @NgModule({
   exports: [
@@ -18,7 +24,7 @@ import { RouterModule } from '@angular/router';
     RecipeItemComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule.forChild(routes),
   ]
 })
 export class RecipesModule { }

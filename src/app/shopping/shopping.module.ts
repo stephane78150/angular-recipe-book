@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ShoppingComponent } from './shopping.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { Route, RouterModule } from '@angular/router';
+
+const routes: Route[] = [
+  {path: '', component: ShoppingListComponent, title: "Recipe book - Shopping List"},
+]
 
 @NgModule({
   exports: [
@@ -13,7 +18,8 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     ShoppingListComponent,
     ShoppingEditComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes),    
   ]
 })
 export class ShoppingModule { }
