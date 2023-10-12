@@ -10,19 +10,28 @@ export class ShoppingListService {
     {name: "apple", amount: 10},    
   ];
 
-  public $added = new EventEmitter<{data: Ingredient[]}>();
+  public $changed = new EventEmitter<{data: Ingredient[]}>();
 
   public AddItem(name: string, amount: number) {
     console.log("Add item to shopping list", name, amount);
 
     const ingredient = {name, amount};    
     this.data.push(ingredient);
-    this.$added.emit({data: this.data})
+    this.$changed.emit({data: this.data})
   }
 
   public AddItems(items: Ingredient[]) {        
     this.data = [...this.data, ...items];
-    this.$added.emit({data: this.data})
+    this.OnChanged();
+  }
+
+  public Clear() {
+    this.data = [];
+    this.OnChanged();
+  }
+
+  private OnChanged() {
+    this.$changed.emit({data: this.data})
   }
 
   public get ingredients() {

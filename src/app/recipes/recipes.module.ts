@@ -13,10 +13,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  exports: [
-    RecipesComponent,
-    RecipeDetailsComponent,
-  ],
+  exports: [],
   declarations: [
     RecipesComponent,
     RecipeListComponent,

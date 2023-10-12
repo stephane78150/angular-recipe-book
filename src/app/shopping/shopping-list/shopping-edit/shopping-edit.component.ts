@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ShoppingListService } from '../../shopping-list-service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -16,9 +17,12 @@ export class ShoppingEditComponent {
   public constructor(private shoppingListService: ShoppingListService) {
   }
 
-  public Add() {
-    const amount = this.amountInput.nativeElement.valueAsNumber;
-    const name = this.nameInput.nativeElement.value;
-    this.shoppingListService.AddItem(name, amount);
+  public AddIngredient(form: NgForm) {
+    console.log("submitted", form.value);
+    this.shoppingListService.AddItem(form.value.name, form.value.amount);
+  }
+
+  public ClearIngredients() {
+    this.shoppingListService.Clear();
   }
 }

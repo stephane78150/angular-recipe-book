@@ -5,3 +5,11 @@
 .recipe-details-image {    
     max-height: 500px;
 }
+
+.ng-invalid.form-control.ng-dirty {
+    border: solid red 2px;
+}
+
+.ng-valid.form-control.ng-dirty {
+    border: solid green 2px;
+}
